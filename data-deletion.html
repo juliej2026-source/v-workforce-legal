@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>V Workforce — User Data Deletion</title>
+<style>body{font-family:system-ui,-apple-system,sans-serif;max-width:760px;margin:40px auto;padding:24px;color:#0D1F35;line-height:1.55}h1{color:#0A7C6E;border-bottom:2px solid #C9A84C;padding-bottom:.4em}h2{color:#0A7C6E;margin-top:1.8em}code{background:#f3f4f6;padding:2px 6px;border-radius:4px}small{color:#8faec4}</style></head><body>
+<h1>User Data Deletion — V Workforce</h1>
+<p><small>Effective 2026-04-27 · Operator: AID Japan, Niseko, Japan · contact: caesarniseko@gmail.com</small></p>
+<p>You can request deletion of all data V Workforce holds about you in three ways. Pick whichever is easiest.</p>
+<h2>Option 1 — In-chat (instant)</h2>
+<p>On the messaging surface where you talk to V Workforce (WhatsApp <b>AID Japan</b> or LINE <b>@433fxwqh</b>), send the message:</p>
+<p><code>delete my data</code></p>
+<p>The bot replies with a confirmation prompt; tap "Yes, delete" and within ~10 seconds we purge:</p>
+<ul>
+<li>Your session record (your active persona, conversation context)</li>
+<li>Any Google OAuth refresh token you authorised (so Iris loses inbox + calendar access)</li>
+<li>Hashed audit log entries tied to your user id</li>
+<li>Stripe subscription metadata (the Stripe customer record itself you can delete via the customer portal we link to)</li>
+</ul>
+<h2>Option 2 — Email request</h2>
+<p>Email <a href="mailto:caesarniseko@gmail.com?subject=V%20Workforce%20Data%20Deletion%20Request">caesarniseko@gmail.com</a> with the subject "V Workforce Data Deletion Request" and your messaging-platform identifier (WhatsApp number or LINE display name). We confirm receipt within 24h and complete deletion within 30 days, per GDPR / APPI / CCPA standards.</p>
+<h2>Option 3 — Meta callback (Facebook Login users)</h2>
+<p>If you reached V Workforce through Facebook Login, you can trigger deletion via Meta:</p>
+<p><b>Facebook</b>: Settings → Apps and Websites → V Workforce → Remove. Meta then POSTs a signed deletion callback to our endpoint at <code>POST /data-deletion</code>, and we purge the same data set as Option 1.</p>
+<h2>What gets deleted</h2>
+<ul>
+<li>All hashed-user identifiers</li>
+<li>All Google OAuth tokens (you keep the right to revoke separately at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>)</li>
+<li>All session state (active persona, conversation context, worker-mode flags)</li>
+<li>All audit log entries within 30 days; older entries are auto-purged anyway</li>
+</ul>
+<h2>What we don't delete (and why)</h2>
+<ul>
+<li><b>Stripe billing records</b>: kept per Stripe's policy (typically 7 years for tax compliance). You can request Stripe-side deletion via Stripe's data-rights flow.</li>
+<li><b>Aggregated, fully-anonymised metrics</b> (e.g. "Alex processed N receipts last month"): no personal identifiers, retained indefinitely.</li>
+</ul>
+<h2>Confirmation</h2>
+<p>After deletion completes we email you a confirmation with the timestamp. Reply to that email if any record is missed and we'll re-purge.</p>
+<p><small>Questions: caesarniseko@gmail.com · AID Japan, Niseko, Hokkaido, Japan</small></p>
+</body></html>

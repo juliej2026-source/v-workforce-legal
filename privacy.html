@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>V Workforce — Privacy Policy</title>
+<style>body{font-family:system-ui,-apple-system,sans-serif;max-width:760px;margin:40px auto;padding:24px;color:#0D1F35;line-height:1.55}h1{color:#0A7C6E;border-bottom:2px solid #C9A84C;padding-bottom:.4em}h2{color:#0A7C6E;margin-top:1.8em}a{color:#0A7C6E}small{color:#8faec4}</style></head><body>
+<h1>Privacy Policy — V Workforce</h1>
+<p><small>Effective 2026-04-27 · Operator: AID Japan, Niseko, Japan · contact: caesarniseko@gmail.com</small></p>
+<p>V Workforce ("we", "the Service") is an AI-assistant platform that delivers AI workers (V, Iris, Nova, Maya, Alex, Ken, Sherly) to small businesses through messaging surfaces (WhatsApp, LINE, web). This page explains what we collect, why, and your rights.</p>
+<h2>1. What we collect</h2>
+<ul>
+<li><b>Identifiers</b>: your messaging-platform user id (e.g. WhatsApp phone number, LINE userId). We hash these (SHA-256, first 12 hex chars) before any logging or analytics — raw ids never leave the dispatcher.</li>
+<li><b>Message content</b>: the text + attachments you send. Used to route to the relevant AI persona and produce a reply. We do not sell or share message content with third parties for advertising.</li>
+<li><b>Connected-account data</b>: when you authorise our Google integration (Iris's Gmail/Calendar features), we store an OAuth refresh token at file mode 600 on our servers, scoped to the minimum required Google API scopes (<code>gmail.readonly</code>, <code>calendar.events</code>, <code>userinfo.email</code>).</li>
+<li><b>Receipt images</b>: when you upload a receipt to Alex (accounting persona), the image is sent to Anthropic Claude vision for OCR. The image is not retained by V Workforce after parsing.</li>
+</ul>
+<h2>2. Third-party processors</h2>
+<p>We rely on the following processors to operate the Service:</p>
+<ul>
+<li><b>Meta Platforms</b> (WhatsApp Cloud API): messaging delivery</li>
+<li><b>LINE Corporation</b> (Messaging API): messaging delivery</li>
+<li><b>Anthropic</b> (Claude API): natural language + vision processing</li>
+<li><b>Stripe</b>: payment processing for paid persona subscriptions</li>
+<li><b>Google</b>: Gmail + Calendar API (only when you have explicitly connected your Google account)</li>
+</ul>
+<h2>3. How long we retain data</h2>
+<ul>
+<li>Hashed-user audit logs: 30 days, then auto-purged</li>
+<li>Session state (your active persona, conversation context): cleared on disconnect or 30-day idle</li>
+<li>OAuth tokens: until you revoke at <code>myaccount.google.com/permissions</code> or message <code>cancel</code> in chat</li>
+<li>Stripe billing records: per Stripe's retention policy (typically 7 years for tax)</li>
+</ul>
+<h2>4. Your rights</h2>
+<p>You can:</p>
+<ul>
+<li>Revoke Google access at any time via <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a></li>
+<li>Cancel a paid persona via the Manage subscription link in chat → instant Stripe portal</li>
+<li>Request data deletion by emailing <a href="mailto:caesarniseko@gmail.com">caesarniseko@gmail.com</a> — we'll purge within 30 days</li>
+<li>Disable WhatsApp / LINE delivery by blocking the bot's number / unfollowing the official account</li>
+</ul>
+<h2>5. Security</h2>
+<p>All session and token files use Unix mode 600 (owner read/write only). Outbound HTTP is restricted via host-allowlist (SSRF lock) to our explicit processor list. Webhook payloads from Meta and LINE are signature-verified (HMAC-SHA256 against the channel secret) before any processing.</p>
+<h2>6. Changes</h2>
+<p>If we materially change this policy, we'll notify you in the chat surface where you interact with us before the change takes effect.</p>
+<h2>7. Contact</h2>
+<p>caesarniseko@gmail.com · AID Japan, Niseko, Hokkaido, Japan</p>
+</body></html>
